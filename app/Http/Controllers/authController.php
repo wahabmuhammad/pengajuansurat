@@ -14,8 +14,8 @@ class authController extends Controller
             'email' => 'required',
             'password' => 'required'
             ],[
-                'email.required' => 'NIP wajib diisi',
-                'password.required' => 'password wajib diisi',
+                'email.required' => 'Email wajib diisi',
+                'password.required' => 'Password wajib diisi',
             ]);
 
         $infologin = [
@@ -30,7 +30,7 @@ class authController extends Controller
                 return redirect('/dashboard');
             }
         }else{
-            return redirect('/')->withErrors('NIP atau Password tidak sesuai')->withInput();
+            return redirect('/')->withErrors('Email atau Password tidak sesuai')->withInput();
         }
         
     }
@@ -52,5 +52,9 @@ class authController extends Controller
 
         return view('auth.login')->with('Berhasil Membuat akun');
 
+    }
+
+    public function logout(){
+        
     }
 }

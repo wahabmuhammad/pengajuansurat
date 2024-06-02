@@ -4,8 +4,8 @@ body {
 }
 
 .navbar {
-    background-color:#fff;
-    color:black;
+    background-color: #fff;
+    color: black;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -80,15 +80,29 @@ body {
 .navbar-toggler.open .hamburger::after {
     transform: translateY(0) rotate(-90deg);
 }
+
 @media only screen and (min-width: 1200px) {
-    .navbar-toggler{
+    .navbar-toggler {
         display: none;
+    }
+
+    .img {
+        display: flex;
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
     .navbar-menu {
         display: flex;
+    }
+
+    body {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .img {
+        display: none;
     }
 
     .navbar-menu li {

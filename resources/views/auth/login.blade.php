@@ -11,9 +11,9 @@
                     </ul>
                 </div>
             @endif
-            <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100" id="row-atas">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5 d-flex flex-column justify-content-center align-items-center">
-                    <img src="{{ asset('image/jepara.png') }}" class="" alt="image" id="foto-jepara">
+                    <img src="{{ asset('image/jepara.png') }}" class="img" alt="image" id="foto-jepara">
                     <div class="row text-center mt-3">
                         <h4>Kecamatan Welahan Kabupaten Jepara</h4>
                     </div>
@@ -48,11 +48,11 @@
                                         class="btn btn-outline-light btn-lg px-5" type="submit">Masuk</button>
                                 </form>
 
-                                <div class="d-flex justify-content-center text-center mt-0 pt-1">
+                                {{-- <div class="d-flex justify-content-center text-center mt-0 pt-1">
                                     <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
                                     <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
                                     <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-                                </div>
+                                </div> --}}
 
                             </div>
 

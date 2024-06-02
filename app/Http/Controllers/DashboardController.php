@@ -10,4 +10,13 @@ class DashboardController extends Controller
     public function index(){
         return view('dashboard.dashboard');
     }
+
+    //visi-misi Controller
+    public function visimisi(){
+        return view('dashboard.visimisi');
+    }
+
+    public function tentangkami(){
+        return view('dashboard.tentangkami');
+    }
 }
