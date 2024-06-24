@@ -6,6 +6,8 @@ namespace App\Models;
 
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,7 +17,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, CanResetPassword;
 
     protected $table = 'tb_user';
-    
+
     protected $fillable = [
         'email',
         'password',
@@ -26,7 +28,16 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
     public $timestamps = false;
-    
+
+    public function datadiri(): BelongsTo
+    {
+        return $this->belongsTo(datadiri::class, 'user_fk');
+    }
+
+    public function dataLayanan(): HasMany
+    {
+        return $this->hasMany(dataLayanan::class, 'id_user');
+    }
     // use HasApiTokens, HasFactory, Notifiable;
 
     /**

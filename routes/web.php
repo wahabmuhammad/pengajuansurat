@@ -3,6 +3,7 @@
 use App\Http\Controllers\authController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\pengambilanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,12 +29,19 @@ Route::get('/sign-up', [authController::class, 'register'])->name('daftar');
 Route::post('/sign-up/daftar', [authController::class, 'daftar'])->name('store');
 
 //middleware auth
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth','cekUser'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/visi-misi', [DashboardController::class, 'visimisi'])->name('visimisi');
     Route::get('/tentang-kami', [DashboardController::class, 'tentangkami'])->name('tentangkami');
     Route::get('/ketentuan', [DashboardController::class, 'ketentuan'])->name('ketentuan');
     Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan');
-    Route::get('/pengambilan', [PengajuanController::class, 'index'])->name('pengambilan');
+    Route::post('/simpan/data-diri', [PengajuanController::class, 'datadiri'])->name('simpandatadiri');
+    Route::post('/edit/{id}', [PengajuanController::class, 'updatediri'])->name('updatediri');
+    Route::post('/upload-data', [PengajuanController::class, 'uploadData'])->name('upload.data');
+    Route::get('/pengambilan', [pengambilanController::class, 'index'])->name('pengambilan');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+});
+
+Route::middleware(['auth','cekAdmin'])->group(function(){
+    Route::get('/admin', [pengambilanController::class, 'indexAdmin'])->name('admin');
 });
