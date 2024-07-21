@@ -36,12 +36,12 @@
 </head>
 
 <body>
+    @include('layout.admin.navbarAdmin')
     <script src="{{ asset('tabler/dist/js/demo-theme.min.js?1692870487') }}"></script>
     <div class="page">
         <!-- Sidebar -->
         {{-- @include('layout.admin.sideBar') --}}
         <!-- Navbar -->
-        @include('layout.admin.navbarAdmin')
         <div class="page-wrapper">
             <!-- Page header -->
 
