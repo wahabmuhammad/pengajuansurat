@@ -16,28 +16,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $d)    
-                        <tr>
-                            <td>{{$d->nama}}</td>
-                            <td class="text-secondary">
-                                {{$d->nik}}
-                            </td>
-                            <td class="text-secondary"><a href="#" class="text-reset">{{$d->nohp}}</a></td>
-                            <td class="text-secondary">
-                                {{$d->nama_layanan}}
-                            </td>
-                            <td class="text-secondary">
-                                <span class="badge badge-primary"> Proses</span>
-                            </td>
-                            <td>
-                                <a href="{{ asset('/pdf/' . $d->dokumentambahan) }}"> <button class="btn btn-pink">Download</button> </a> 
-                            </td>
-                            {{-- <td>
+                        @foreach ($data as $d)
+                            <tr>
+                                <td>{{ $d->nama }}</td>
+                                <td class="text-secondary">
+                                    {{ $d->nik }}
+                                </td>
+                                <td class="text-secondary"><a href="#" class="text-reset">{{ $d->nohp }}</a></td>
+                                <td class="text-secondary">
+                                    {{ $d->nama_layanan }}
+                                </td>
+                                <td class="text-secondary">
+                                    @if ($d->status == null)
+                                        <span class="badge badge-primary"> Proses</span>
+                                    @else
+                                        <span class="badge badge-primary"> {{$d->status}}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($d->dokumen == null)
+                                    <span class="badge badge-danger"> Data masih Proses</span>
+                                    @else
+                                    <a href="{{route('download',$d->id_respon)}}"> <button class="btn btn-success">Download</button> </a>
+                                    @endif
+                                </td>
+                                {{-- <td>
                             </td> --}}
-                            <td>
-                                <a href="#"><button class="btn btn-azure">Hapus</button></a>
-                            </td>
-                        </tr>
+                                <td>
+                                    <a href="#"><button class="btn btn-azure">Hapus</button></a>
+                                </td>
+                            </tr>
                         @endforeach
                         {{-- <tr>
                             <td>Jeffie Lewzey</td>

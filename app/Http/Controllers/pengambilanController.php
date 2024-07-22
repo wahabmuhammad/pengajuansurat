@@ -21,7 +21,10 @@ class pengambilanController extends Controller
             ->join('tb_datadiri', 'tb_user.id', '=', 'tb_datadiri.user_fk')
             ->join('tb_layanan', 'tb_user.id', '=' ,'tb_layanan.id_user')
             ->join('tb_ketentuan', 'tb_layanan.id_ketentuan', '=', 'tb_ketentuan.id_ketentuan')
+            ->join('tb_respon', 'tb_user.id', '=', 'tb_respon.user_fk')
+            ->select('tb_datadiri.nama', 'tb_datadiri.nik' ,'tb_datadiri.nohp', 'tb_ketentuan.nama_layanan', 'tb_respon.status','tb_respon.dokumen', 'tb_respon.id_respon')
             ->get();
+        // dd($data);
         return view('pengambilan.index', compact(
             'data'
         ));
@@ -33,6 +36,25 @@ class pengambilanController extends Controller
         $data = datadiri::all();
         // dd($data);
         return view('layout.admin.indexAdmin', compact('data'));
+    }
+
+    public function downloadUser(Request $request, $id){
+        // dd($request, $id);
+        $document = respon::findOrFail($id);
+
+        // Ambil file path dari database
+        $filename = $document->dokumen;
+        $filePath = storage_path("app/public/pdf/{$filename}");
+        // Check apakah file ada
+
+        // Mendapatkan nama asli file
+        $originalName = pathinfo($filename, PATHINFO_FILENAME);
+
+        // Mendapatkan tipe file
+        $fileExtension = pathinfo($filename, PATHINFO_EXTENSION);
+        
+        // // Download file
+        return response()->download($filePath,$filename);
     }
 
     public function download($id)

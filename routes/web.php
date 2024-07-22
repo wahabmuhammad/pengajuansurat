@@ -39,7 +39,7 @@ Route::middleware(['auth','cekUser'])->group(function(){
     Route::post('/edit/{id}', [PengajuanController::class, 'updatediri'])->name('updatediri');
     Route::post('/upload-data', [PengajuanController::class, 'uploadData'])->name('upload.data');
     Route::get('/pengambilan', [pengambilanController::class, 'index'])->name('pengambilan');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+    Route::get('/download/{id}/berkasverifikasi', [pengambilanController::class, 'downloadUser'])->name('download');
 });
 
 Route::delete('/delete/{id}', [PengajuanController::class, 'delete'])->name('delete.datadiri');
