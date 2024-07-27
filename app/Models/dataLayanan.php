@@ -13,7 +13,6 @@ class dataLayanan extends Model
     protected $fillable = [
         'nik',
         'id_layanan',
-<<<<<<< HEAD
         'info_tambahan',
         'dokumentambahan'
     ];
@@ -21,10 +20,5 @@ class dataLayanan extends Model
     protected $primaryKey = 'id_layanan';
 
 
-=======
-        'info_tambahan'
-    ];
-
->>>>>>> 3c0a5951cdd9ab439fc07cc569c321d59fd3715b
     public $timestamps = false;
 }

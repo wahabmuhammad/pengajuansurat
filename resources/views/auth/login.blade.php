@@ -41,8 +41,8 @@
                                         <label class="form-label" for="typePasswordX">Password</label>
                                     </div>
 
-                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Lupa
-                                            password?</a></p>
+                                    {{-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Lupa
+                                            password?</a></p> --}}
 
                                     <button data-mdb-button-init data-mdb-ripple-init
                                         class="btn btn-outline-light btn-lg px-5" type="submit">Masuk</button>
